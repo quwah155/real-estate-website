@@ -2,7 +2,7 @@
  * Format a number as Nigerian Naira or USD
  * e.g. 95000000 → "₦95,000,000"
  */
-export const format Price = (amount, currency = 'NGN') => {
+export const formatPrice = (amount, currency = 'NGN') => {
     if (currency === 'NGN') {
         return '₦' + amount.toLocaleString('en-NG');
     }

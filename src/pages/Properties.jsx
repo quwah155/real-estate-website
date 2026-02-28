@@ -17,7 +17,7 @@ const PRICE_RANGES = [
 const Properties = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [type, setType] = useState(searchParams.get('type') || 'all');
-    const [priceRange, setPr iceRange] = useState(0);
+    const [priceRange, setPriceRange] = useState(0);
     const [location, setLocation] = useState(searchParams.get('location') || 'all');
     const [searchQ, setSearchQ] = useState('');
     const [showFilters, setShowFilters] = useState(false);
