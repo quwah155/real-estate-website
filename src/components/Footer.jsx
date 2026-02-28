@@ -6,20 +6,23 @@ const Footer = () => {
     const year = new Date().getFullYear();
 
     return (
-        <footer className="bg-[#0A1628] text-white">
+        <footer style={{ background: 'var(--section-dark-bg)', color: '#fff', borderTop: '1px solid rgba(201,168,76,0.12)' }}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
                     {/* Brand */}
                     <div className="lg:col-span-1">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="w-9 h-9 rounded-lg bg-[#C9A84C] flex items-center justify-center">
-                                <span className="text-white font-bold text-lg">L</span>
+                        <div className="flex items-center gap-2.5 mb-5">
+                            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C9A84C] to-[#A0822A] flex items-center justify-center shadow-md">
+                                <span className="text-white font-bold text-lg select-none">L</span>
                             </div>
-                            <span className="font-bold text-lg">{siteConfig.agencyName}</span>
+                            <span className="font-bold text-lg tracking-tight">{siteConfig.agencyName}</span>
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed mb-6">
                             Lagos's most trusted real estate partner. Premium listings, verified titles, and expert guidance.
                         </p>
+                        {/* Gold divider */}
+                        <div className="gold-divider mb-6" />
                         {/* Social */}
                         <div className="flex gap-3">
                             {[
@@ -33,7 +36,7 @@ const Footer = () => {
                                     href={href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                                    className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-gray-400 hover:border-[#C9A84C] hover:text-[#C9A84C] transition-all duration-300 hover:shadow-[0_0_12px_rgba(201,168,76,0.3)]"
                                 >
                                     <Icon size={15} />
                                 </a>
@@ -43,13 +46,13 @@ const Footer = () => {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-widest">Quick Links</h4>
+                        <h4 className="font-semibold text-white mb-4 text-xs uppercase tracking-widest" style={{ color: '#C9A84C' }}>Quick Links</h4>
                         <ul className="space-y-2.5">
                             {[
                                 { label: 'Home', to: '/' },
                                 { label: 'Properties', to: '/properties' },
-                                { label: 'Properties for Sale', to: '/properties?type=sale' },
-                                { label: 'Properties for Rent', to: '/properties?type=rent' },
+                                { label: 'For Sale', to: '/properties?type=sale' },
+                                { label: 'For Rent', to: '/properties?type=rent' },
                                 { label: 'About Us', to: '/about' },
                                 { label: 'Contact', to: '/contact' },
                             ].map(({ label, to }) => (
@@ -67,7 +70,7 @@ const Footer = () => {
 
                     {/* Locations */}
                     <div>
-                        <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-widest">Areas We Cover</h4>
+                        <h4 className="font-semibold mb-4 text-xs uppercase tracking-widest" style={{ color: '#C9A84C' }}>Areas We Cover</h4>
                         <ul className="space-y-2.5">
                             {['Lekki Phase 1', 'Victoria Island', 'Ikoyi', 'Banana Island', 'Surulere', 'Ajah', 'Yaba', 'Epe'].map(area => (
                                 <li key={area}>
@@ -84,7 +87,7 @@ const Footer = () => {
 
                     {/* Contact */}
                     <div>
-                        <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-widest">Contact Us</h4>
+                        <h4 className="font-semibold mb-4 text-xs uppercase tracking-widest" style={{ color: '#C9A84C' }}>Contact Us</h4>
                         <ul className="space-y-4">
                             <li className="flex gap-3">
                                 <MapPin size={16} className="text-[#C9A84C] shrink-0 mt-0.5" />
@@ -107,7 +110,8 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+                    style={{ borderColor: 'rgba(201,168,76,0.12)' }}>
                     <p className="text-gray-500 text-xs">
                         &copy; {year} {siteConfig.agencyName}. All rights reserved.
                     </p>

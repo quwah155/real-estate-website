@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -15,77 +16,307 @@
   --font-serif: 'Playfair Display', Georgia, serif;
 }
 
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+/* ── Light Mode CSS Variables ── */
+:root {
+  --bg-primary: #F8F7F4;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F0EDE8;
+  --text-primary: #1C1C1E;
+  --text-secondary: #4B5563;
+  --text-muted: #9CA3AF;
+  --border-color: #E5E2DC;
+  --card-bg: #FFFFFF;
+  --card-shadow: 0 2px 20px rgba(0, 0, 0, 0.07);
+  --card-shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.13);
+  --input-bg: #FFFFFF;
+  --input-border: #D1CAC0;
+  --navbar-bg: rgba(15, 30, 60, 0.96);
+  --navbar-scrolled-bg: rgba(15, 30, 60, 0.98);
+  --hero-overlay: rgba(15, 30, 60, 0.75);
+  --section-dark-bg: #0F1E3C;
+  --section-dark-text: rgba(255, 255, 255, 0.65);
+}
+
+/* ── Dark Mode CSS Variables ── */
+.dark {
+  --bg-primary: #0D0F1A;
+  --bg-secondary: #13162A;
+  --bg-tertiary: #1A1D2E;
+  --text-primary: #F0EDE8;
+  --text-secondary: #B0A898;
+  --text-muted: #6B7280;
+  --border-color: rgba(201, 168, 76, 0.15);
+  --card-bg: #181B2C;
+  --card-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.6);
+  --input-bg: #1A1D2E;
+  --input-border: rgba(201, 168, 76, 0.2);
+  --navbar-bg: rgba(10, 12, 22, 0.85);
+  --navbar-scrolled-bg: rgba(10, 12, 22, 0.97);
+  --hero-overlay: rgba(10, 12, 22, 0.8);
+  --section-dark-bg: #0A0C16;
+  --section-dark-text: rgba(255, 255, 255, 0.55);
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-white);
-  color: var(--color-charcoal);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* ── Luxury Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--color-gold);
-  border-radius: 3px;
+  background: linear-gradient(180deg, #C9A84C, #A0822A);
+  border-radius: 10px;
 }
 
-/* Glass effect utility */
+/* ── Glass effects ── */
 .glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
 }
 
-/* Gold gradient text */
+.dark-glass {
+  background: rgba(13, 15, 26, 0.80);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(201, 168, 76, 0.18);
+}
+
+/* ── Gold gradient text ── */
 .gold-text {
-  background: linear-gradient(135deg, #C9A84C, #E8C97A, #C9A84C);
+  background: linear-gradient(135deg, #C9A84C 0%, #F4D98A 50%, #C9A84C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% auto;
+  animation: goldShift 4s ease infinite;
 }
 
-/* Animation utilities */
+@keyframes goldShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ── Gold Glow ── */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.35), 0 0 60px rgba(201, 168, 76, 0.10);
+}
+
+/* ── Gradient border ── */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #C9A84C, transparent, #C9A84C);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Luxury card ── */
+.luxury-card {
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid var(--border-color);
+}
+
+.luxury-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* ── Animations ── */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes rotateSun {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseSoft {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
 }
 
 .animate-fadeInUp {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* Card hover lift */
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+/* ── Card hover lift (legacy compat) ── */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.14);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* Image skeleton loader */
+.card-hover:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* ── Image skeleton loader ── */
 .img-skeleton {
-  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background: linear-gradient(90deg,
+      var(--bg-tertiary) 25%,
+      var(--border-color) 50%,
+      var(--bg-tertiary) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
+}
+
+/* ── Form inputs dark mode ── */
+.lk-input {
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.lk-input:focus {
+  border-color: #C9A84C;
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
+  outline: none;
+}
+
+.lk-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ── Section Divider ── */
+.gold-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+  border: none;
+  opacity: 0.5;
+}
+
+/* ── Toggle Button ── */
+.theme-toggle {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1A3260, #0F1E3C);
+  border: 1.5px solid rgba(201, 168, 76, 0.5);
+  cursor: pointer;
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.dark .theme-toggle {
+  background: linear-gradient(135deg, #C9A84C, #A0822A);
+  border-color: rgba(248, 240, 200, 0.5);
+}
+
+.theme-toggle:hover {
+  box-shadow: 0 0 12px rgba(201, 168, 76, 0.45);
+  border-color: #C9A84C;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #C9A84C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease;
+  color: #0F1E3C;
+}
+
+.dark .theme-toggle-thumb {
+  transform: translateX(24px);
+  background: #0F1E3C;
+  color: #E8C97A;
 }
